@@ -153,8 +153,8 @@ err_t noeud_detruire( noeud_t ** noeud ,
 		      err_t (*detruire)( void * e) ) 
 {
    if((*noeud)!=NULL){
-	/*noeud_detruire(&((*noeud)->gauche),detruire);
-	noeud_detruire(&((*noeud)->droit),detruire);*/
+	noeud_detruire(&((*noeud)->gauche),detruire);
+	noeud_detruire(&((*noeud)->droit),detruire);
 	detruire(&((*noeud)->etiquette));
 	free((*noeud));
 	*noeud=NULL;

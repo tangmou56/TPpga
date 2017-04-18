@@ -31,7 +31,8 @@ main(int argc , char * argv[] )
     }
 
   exp_n = atof(argv[1]) ;
-  N = powf( 2 , exp_n ) - 1 ; 
+  /*N = powf( 2 , exp_n ) - 1 ; */
+  N=7;
 
   printf( "Debut du programme de test sur les fonctions  de type arbre ab_t avec %d elements\n"  , (int)N ) ; 
 

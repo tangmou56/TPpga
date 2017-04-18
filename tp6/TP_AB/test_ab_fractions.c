@@ -34,8 +34,8 @@ main(int argc , char * argv[] )
     }
 
   exp_n = atof(argv[1]) ;
-  N = powf( 2 , exp_n ) - 1 ; 
-  
+  /*N = powf( 2 , exp_n ) - 1 ; */
+  N=7;
   ab_parcours_t parcours = UNK  ; 
   if( ! strcmp( argv[2] , "INF"  ) ) parcours = INFIXE ;
   if( ! strcmp( argv[2] , "POST" ) ) parcours = POSTFIXE ;
@@ -122,7 +122,7 @@ main(int argc , char * argv[] )
       return(noerr) ; 
     }
   
- printf( "Test chargement arbre\n" ) ;
+ /*printf( "Test chargement arbre\n" ) ;
  if( ( noerr = ab_charger( &arbre  , FICH_TEST , 			
 			   fraction_copier_cb , fraction_detruire_cb , 
 			   fraction_charger_cb ) ) )  
@@ -134,7 +134,7 @@ main(int argc , char * argv[] )
 
   printf( "Affichage arbre charge\n" ) ;
   ab_afficher( arbre , fraction_afficher_cb ) ; 
-  printf( "\n");
+  printf( "\n");*/
 
   /*
    * Destructions variables de travail 
@@ -144,7 +144,7 @@ main(int argc , char * argv[] )
     {
       fraction_detruire( &fractions[i] ) ; 
     }
-
+	free(noeuds);
   printf( "Fin du programme de test sur les objets de type arbre ab_t\n" ) ; 
 
   return(0) ; 

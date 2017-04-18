@@ -67,7 +67,7 @@ main()
       return(noerr) ; 
     }
 
-  if( ( noerr = noeud_detruire( &noeud_fg , individu_detruire_cb ) ) )
+ /* if( ( noerr = noeud_detruire( &noeud_fg , individu_detruire_cb ) ) )
    { 
       printf("Sortie avec code erreur = %d\n" , noerr ) ;
       return(noerr) ; 
@@ -77,7 +77,7 @@ main()
     { 
       printf("Sortie avec code erreur = %d\n" , noerr ) ;
       return(noerr) ; 
-    }
+    }*/
  
   /*
    * Destruction varaibles de travail 

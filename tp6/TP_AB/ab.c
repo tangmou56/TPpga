@@ -3,9 +3,8 @@
 extern
 noeud_t * ab_racine_lire( const ab_t * arbre ) 
 {
-  /***********
-   * A FAIRE *
-   ***********/
+  if(arbre!=NULL)
+	return arbre->racine;
   return(NULL) ; 
 }
 
@@ -13,27 +12,24 @@ extern
 err_t ab_racine_ecrire( ab_t * arbre , 
 			noeud_t * racine ) 
 {
-  /***********
-   * A FAIRE *
-   ***********/
+  if(arbre!=NULL)
+	arbre->racine=racine;
   return(OK) ; 
 }
 
 extern
 int ab_taille_lire( const ab_t * arbre ) 
 {
-  /***********
-   * A FAIRE *
-   ***********/
+  if(arbre!=NULL)
+	return arbre->taille;
   return(-1) ; 
 }
 
 extern
 err_t ab_taille_incrementer( ab_t * arbre ) 
 {
-  /***********
-   * A FAIRE *
-   ***********/
+  if(arbre!=NULL)
+	arbre->taille=arbre->taille+1;
   return(OK);
 }
 
@@ -45,19 +41,19 @@ err_t ab_taille_incrementer( ab_t * arbre )
 extern
 booleen_t ab_existe( const ab_t * arbre )
 {
-  /***********
-   * A FAIRE *
-   ***********/
+  if(arbre==NULL)
+	return FAUX;
   return(VRAI) ; 
 }
 
 extern
 booleen_t ab_vide( const ab_t * arbre )
 {
-  /***********
-   * A FAIRE *
-   ***********/
-  return(FAUX) ; 
+  if(arbre!=NULL){
+	if(arbre->racine==NULL)
+		return VRAI;
+  } 
+ return(FAUX) ; 
 }
 
 /*
@@ -69,10 +65,11 @@ ab_t * ab_creer( err_t (*fonction_affectation)( void * e1 , void * e2 ) ,	/*!< F
 		 err_t (*fonction_destruction)( void * e)  )			/*!< Fonction de destruction d'un element */
 {
   ab_t * arbre = NULL ; 
-
-  /***********
-   * A FAIRE *
-   ***********/
+  arbre=malloc(sizeof(ab_t));
+  arbre->taille=0;
+  arbre->racine=NULL;
+  arbre->affecter=fonction_affectation;
+  arbre->detruire=fonction_destruction;
   
   return(arbre) ; 
 }
@@ -84,11 +81,12 @@ ab_t * ab_creer( err_t (*fonction_affectation)( void * e1 , void * e2 ) ,	/*!< F
 
 extern 
 err_t ab_detruire( ab_t ** arbre ) 
-{
-  /***********
-   * A FAIRE *
-   ***********/
-
+{ 
+  if(*arbre!=NULL){
+  	noeud_detruire( &((*arbre)->racine) , (*arbre)->detruire ); 
+  	free(*arbre);
+  	(*arbre)=NULL;
+  }
   return(OK) ; 
 }
 
@@ -104,9 +102,7 @@ extern
 void ab_afficher( const ab_t * arbre , 
 		  void (*fonction_affichage)(const void *)) 
 {
-  /***********
-   * A FAIRE *
-   ***********/
+  noeud_afficher( arbre->racine ,fonction_affichage );
 }
 
 
