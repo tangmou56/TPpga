@@ -125,7 +125,7 @@ main(int argc , char * argv[] )
       return(noerr) ; 
     }
   
- /*printf( "Test chargement arbre\n" ) ;
+ printf( "Test chargement arbre\n" ) ;
  if( ( noerr = ab_charger( &arbre  , FICH_TEST , 			
 			   string_copier_cb , string_detruire_cb , 
 			   string_charger_cb ) ) )  
@@ -137,7 +137,7 @@ main(int argc , char * argv[] )
 
   printf( "Affichage arbre charge\n" ) ;
   ab_afficher( arbre , string_afficher_cb ) ; 
-  printf( "\n");*/
+  printf( "\n");
 
   /*
    * Destructions variables de travail 
