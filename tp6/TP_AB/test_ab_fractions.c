@@ -122,7 +122,7 @@ main(int argc , char * argv[] )
       return(noerr) ; 
     }
   
- /*printf( "Test chargement arbre\n" ) ;
+ printf( "Test chargement arbre\n" ) ;
  if( ( noerr = ab_charger( &arbre  , FICH_TEST , 			
 			   fraction_copier_cb , fraction_detruire_cb , 
 			   fraction_charger_cb ) ) )  
@@ -134,7 +134,7 @@ main(int argc , char * argv[] )
 
   printf( "Affichage arbre charge\n" ) ;
   ab_afficher( arbre , fraction_afficher_cb ) ; 
-  printf( "\n");*/
+  printf( "\n");
 
   /*
    * Destructions variables de travail 

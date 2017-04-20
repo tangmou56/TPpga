@@ -36,7 +36,7 @@ err_t noeud_etiquette_ecrire( noeud_t * noeud ,
 			      err_t (*affecter)( void * e1 , void * e2 ) ) 
 {
   if(noeud!=NULL)  
-	affecter(noeud->etiquette,etiquette);
+	affecter(&(noeud->etiquette),etiquette);
   return(OK) ; 
 }
 
@@ -137,6 +137,7 @@ noeud_t * noeud_creer( const int numero ,
   noeud->gauche=sous_arbre_gauche;
   noeud->droit=sous_arbre_droit;
   noeud->numero=numero;
+  noeud->etiquette=NULL;
   affecter(&(noeud->etiquette),etiquette);
     
 
@@ -231,8 +232,12 @@ booleen_t noeud_numero_rechercher( noeud_t ** result ,        /* Resultat: @ du 
 		*result=racine;
 		return VRAI;
 	}
-	if(!(noeud_numero_rechercher(result,racine->gauche,numero)))
-		noeud_numero_rechercher(result,racine->droit,numero);	
+	if(!(noeud_numero_rechercher(result,racine->gauche,numero))){
+			if(noeud_numero_rechercher(result,racine->droit,numero))
+				return VRAI;
+		}
+	else
+		return VRAI;		
   }
   return(FAUX) ; 
 }

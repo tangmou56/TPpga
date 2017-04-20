@@ -158,6 +158,7 @@ err_t ab_charger( ab_t ** arbre  ,						/* Arbre Binaire d'elements a charger */
    */  
   while( ! feof(fd) )
     {
+
       /* 
        * Lecture 1 ligne : num_noeud num_fils_gauche num_fils_droit <etiquette> 
        */
@@ -177,6 +178,7 @@ err_t ab_charger( ab_t ** arbre  ,						/* Arbre Binaire d'elements a charger */
       
       /* Recherche noeud */
       noeud = NULL ; 
+
       if( noeud_numero_rechercher( &noeud , 
 				   ab_racine_lire((*arbre)) ,
 				   num_noeud ) )
@@ -184,6 +186,7 @@ err_t ab_charger( ab_t ** arbre  ,						/* Arbre Binaire d'elements a charger */
 	  /* Noeud existant --> affectation etiquette */
 	  if( ( noerr = noeud_etiquette_ecrire( noeud , etiquette , fonction_affectation ) ) )
 	    return(noerr) ; 
+	    
 	}
       else
 	{
