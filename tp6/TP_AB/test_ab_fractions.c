@@ -139,7 +139,7 @@ main(int argc , char * argv[] )
   /*
    * Destructions variables de travail 
    */
-  
+  ab_detruire( &arbre );
   for( i=1 ; i<N ; i++ ) 
     {
       fraction_detruire( &fractions[i] ) ; 

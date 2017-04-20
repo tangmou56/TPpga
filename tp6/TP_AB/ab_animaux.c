@@ -9,9 +9,8 @@ extern
 void ab_animaux_afficher( const ab_t * arbre , 
 			  void (*fonction_affichage)(const void *)) 
 {
-  /***********
-   * A FAIRE *
-   ***********/
+  
+  fonction_affichage(arbre->racine->etiquette);
  
   return ; 
 }
