@@ -33,7 +33,7 @@ main( int argc  , char * argv[] )
   
 
   printf("Affichage\n\n") ; 
-  ab_animaux_afficher( arbre , string_string_afficher_cb ) ; 
+  ab_animaux_afficher( arbre , string_string_afficher_cb) ;
   printf( "\n");
 
   printf("Reconnaissance\n\n") ; 
