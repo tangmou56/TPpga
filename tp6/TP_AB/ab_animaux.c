@@ -42,17 +42,17 @@ void ab_animaux_afficher( const ab_t * arbre ,
 
 void reco( noeud_t ** racine ,
 		  err_t (*fonction_affectation)(void * , void *),void (*fonction_affichage)(const void *)){
-	int rep;
+	char rep[100];
 	char str[100];
 	if(*racine!=NULL){
 		fonction_affichage((*racine)->etiquette);
 		printf("\n");
 		if(!noeud_feuille(*racine)){
-			printf("reponse : 1-oui 2-non: ");
-			scanf("%i",&rep);
+			printf("reponse : o-oui n-non: ");
+			scanf("%s",&rep);
 
 				
-			if(rep==1){
+			if(rep[0]=='o'){
 				if((*racine)->gauche!=NULL)
 					reco((&(*racine)->gauche),fonction_affectation,fonction_affichage);
 				else{
@@ -77,9 +77,9 @@ void reco( noeud_t ** racine ,
 			
 		}
 		else{
-			printf("reponse : 1-oui 2-non: ");
-			scanf("%i",&rep);
-			if(rep==2){
+			printf("reponse : o-oui n-non: ");
+			scanf("%s",&rep);
+			if(rep[0]=='n'){
 				printf("Je donne ma langue au chat.\nQuelle est la reponse? :");
 				scanf("%s",str);
 				string_t *str_t=string_creer(str);

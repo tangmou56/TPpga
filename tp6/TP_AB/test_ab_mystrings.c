@@ -5,6 +5,14 @@
 
 #define FICH_TEST "Fichiers/test_ab_strings.fich"
 
+int puss(int n){
+	int res=1,i;
+	for(i=0;i<n;i++){
+		res=res*2;
+	}
+	return res;
+}
+
 int
 main(int argc , char * argv[] ) 
 {
@@ -35,7 +43,7 @@ main(int argc , char * argv[] )
 
   exp_n = atof(argv[1]) ;
   /*N = powf( 2 , exp_n ) - 1 ; */
-  N=7;
+  N=puss(exp_n);
 
   ab_parcours_t parcours = UNK  ; 
   if( ! strcmp( argv[2] , "INF"  ) ) parcours = INFIXE ;
