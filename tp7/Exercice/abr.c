@@ -3,6 +3,8 @@
 extern
 noeud_t * abr_racine_lire( const abr_t * arbre ) 
 {
+  if(arbre!=NULL)
+	return arbre->racine;
   return(NULL) ; 
 }
 
@@ -10,24 +12,32 @@ extern
 err_t abr_racine_ecrire( abr_t * arbre , 
 			noeud_t * racine ) 
 {
+  if(arbre!=NULL)
+	arbre->racine=racine;
   return(OK) ; 
 }
 
 extern
 int abr_taille_lire( const abr_t * arbre ) 
 {
+  if(arbre!=NULL)
+	return arbre->taille;
   return(0) ; 
 }
 
 extern
 err_t abr_taille_incrementer( abr_t * arbre ) 
 {
+  if(arbre!=NULL)
+	arbre->taille++;
   return(OK);
 }
 
 extern
 err_t abr_taille_decrementer( abr_t * arbre ) 
 {
+  if(arbre!=NULL)
+	arbre->taille--;
   return(OK);
 }
 
@@ -48,6 +58,10 @@ booleen_t abr_existe( const abr_t * arbre )
 extern
 booleen_t abr_vide( const abr_t * arbre )
 {
+  if(arbre!=NULL){
+	if(arbre->racine==NULL)
+  		return VRAI; 
+  }
   return(FAUX) ; 
 }
 
@@ -61,7 +75,12 @@ abr_t * abr_creer( err_t (*fonction_affectation)( void * e1 , void * e2 ) ,	/*!<
 		   int (*fonction_comparaison) ( const void * e1 , const void * e2) )		/*!< Fonction de comparaison de 2 elements */
 {
   abr_t * arbre = NULL ; 
-  
+  arbre=malloc(sizeof(abr_t));
+  arbre->taille=0;
+  arbre->racine=NULL;
+  arbre->affecter=fonction_affectation;
+  arbre->detruire=fonction_destruction;
+  arbre->comparer=fonction_comparaison;
   return(arbre) ; 
 }
 
@@ -74,6 +93,11 @@ abr_t * abr_creer( err_t (*fonction_affectation)( void * e1 , void * e2 ) ,	/*!<
 extern 
 err_t abr_detruire( abr_t ** arbre ) 
 {
+  if(*arbre!=NULL){
+  	noeud_detruire( &((*arbre)->racine) , (*arbre)->detruire ); 
+  	free(*arbre);
+  	(*arbre)=NULL;
+  }
   return(OK) ; 
 }
 
@@ -88,6 +112,7 @@ void abr_afficher( const abr_t * arbre ,
 		  void (*fonction_affichage)(const void *) ,
 		  const ab_parcours_t parcours ) 
 {
+  noeud_afficher( arbre->racine ,fonction_affichage );
   return ; 
 }
 
@@ -100,6 +125,7 @@ extern
 err_t abr_inserer( abr_t * arbre  ,
 		   void * etiquette ) 
 { 
+  
   return(OK) ; 
 }
 

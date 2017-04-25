@@ -25,6 +25,16 @@ void abr_ancetres_afficher( const abr_t * arbre ,
  * a partir d'une liste d'elements generiques
  */
 
+void affec(liste_t* liste,noeud_t **racine,int deb,int fin,err_t (*fonction_affectation)( void * e1 , void * e2 )){
+	if(fin%2==0){
+		*racine=noeud_creer(liste[fin/2],NULL,NULL,fonction_affectation);
+		affec(liste,(*racine)->gauche,0,fin/2-1,fonction_affectation);	
+	}
+	else{
+
+	}
+}
+
 
 
 extern
@@ -34,6 +44,17 @@ err_t abr_dicho_creer( abr_t ** arbre ,
 		       int (*fonction_comparaison) ( const void * e1 , const void * e2) ,
 		       liste_t * liste )
 { 
+  *arbre=malloc(sizeof(abr_t));
+  (*arbre)->taille=0;
+  (*arbre)->racine=NULL;
+  (*arbre)->affecter=fonction_affectation;
+  (*arbre)->detruire=fonction_destruction;
+  (*arbre)->comparer=fonction_comparaison;
+  affec(liste,&((*arbre)->racine),0,sizeof(liste)-1);
+  printf("%i\n",sizeof(liste));
+
+
+
   return(OK) ; 
 }
 
