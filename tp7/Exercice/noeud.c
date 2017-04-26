@@ -143,12 +143,18 @@ err_t noeud_detruire( noeud_t ** noeud ,
 
 extern
 void noeud_afficher( const noeud_t * noeud ,
-		     void (*afficher)(const void *) ) 
+		     void (*afficher)(const void *),
+		     const int parcours ) 
 {
   if(noeud!=NULL){
-	afficher(noeud->etiquette);
-	noeud_afficher(noeud->gauche,afficher);
-	noeud_afficher(noeud->droit,afficher);
+    if(parcours==1)
+		afficher(noeud->etiquette);
+	noeud_afficher(noeud->gauche,afficher,parcours);
+	if(parcours==3)
+		afficher(noeud->etiquette);
+	noeud_afficher(noeud->droit,afficher,parcours);
+	if(parcours==2)
+		afficher(noeud->etiquette);
 
 
   }

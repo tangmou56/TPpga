@@ -79,7 +79,8 @@ main(int argc , char * argv[] )
 				 individu_referencer_cb ,
 				 individu_effacer_cb , 
 				 individu_comparer_cb ,
-				 liste ) ) )
+				 liste,
+				 N ) ) )
     { 
       printf("Sortie avec code erreur = %d\n" , noerr ) ;
       return(noerr) ; 

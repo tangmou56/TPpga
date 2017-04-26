@@ -173,5 +173,5 @@ booleen_t avl_rechercher( noeud_t ** result ,
 {
   return(abr_rechercher( result , 
 			 arbre , 
-			 etiquette )) ; 
+			 etiquette)) ; 
 }

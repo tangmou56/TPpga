@@ -59,7 +59,7 @@ extern void avl_afficher( const avl_t * arbre ,
  */
 
 extern err_t avl_inserer( avl_t * arbre  ,
-			  void * etiquette ) ;
+		   void * etiquette )  ;
 
 /*
  * Suppression d'une valeur dans un AVL
@@ -99,7 +99,7 @@ extern noeud_t * avl_pere_rechercher( const avl_t * arbre ,
  */
 
 extern booleen_t avl_rechercher( noeud_t ** result , 
-				 const avl_t * arbre , 
-				 const void * etiquette ) ;
+			  const avl_t * arbre , 
+			  const void * etiquette );
 
 #endif

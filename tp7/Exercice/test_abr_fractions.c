@@ -74,7 +74,8 @@ main(int argc , char * argv[] )
 				 fraction_referencer_cb ,
 				 fraction_effacer_cb , 
 				 fraction_comparer_cb ,
-				 liste ) ) )
+				 liste,
+				 N ) ) )
     { 
       printf("Sortie avec code erreur = %d\n" , noerr ) ;
       return(noerr) ; 

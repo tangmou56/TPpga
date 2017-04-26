@@ -30,7 +30,7 @@ main()
   noeud    = noeud_creer( individu_1 , noeud_fg , noeud_fd , individu_copier_cb ) ; 
 
   printf( "Test affichage noeud\n" ) ;
-  noeud_afficher( noeud , individu_afficher_cb ) ; 
+  noeud_afficher( noeud , individu_afficher_cb,1 ) ; 
   printf( "\n");
 
   printf( "Test d'existance sur un noeud_t existant\n" ) ;
@@ -64,7 +64,7 @@ main()
       return(noerr) ; 
     }
 
-  if( ( noerr = noeud_detruire( &noeud_fg , individu_detruire_cb ) ) )
+/*  if( ( noerr = noeud_detruire( &noeud_fg , individu_detruire_cb ) ) )
    { 
       printf("Sortie avec code erreur = %d\n" , noerr ) ;
       return(noerr) ; 
@@ -74,7 +74,7 @@ main()
     { 
       printf("Sortie avec code erreur = %d\n" , noerr ) ;
       return(noerr) ; 
-    }
+    }*/
  
   /*
    * Destruction varaibles de travail 

@@ -57,14 +57,14 @@ extern void abr_afficher( const abr_t * arbre ,
  */
 
 extern err_t abr_inserer( abr_t * arbre  ,
-			  void * etiquette ) ;
+		   void * etiquette  ) ;
 
 /*
  * Suppression d'une valeur dans un ABR
  */
 
 extern booleen_t abr_supprimer( abr_t * arbre ,
-			    void * etiquette ) ;
+			 void * etiquette )  ;
 
 /*
  * Chargement d'un arbre a partir d'un fichier 
@@ -97,7 +97,7 @@ extern noeud_t * abr_pere_rechercher( const abr_t * arbre ,
  */
 
 extern booleen_t abr_rechercher( noeud_t ** result , 
-				 const abr_t * arbre , 
-				 const void * etiquette ) ;
+			  const abr_t * arbre , 
+			  const void * etiquette ) ;
 
 #endif

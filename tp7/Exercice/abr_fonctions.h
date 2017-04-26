@@ -19,4 +19,5 @@ err_t abr_dicho_creer( abr_t ** arbre ,
 		       err_t (*fonction_affectation)( void * e1 , void * e2 ) ,	
 		       err_t (*fonction_destruction)( void * e) ,			
 		       int (*fonction_comparaison) ( const void * e1 , const void * e2) ,
-		       liste_t * liste ) ;
+		       liste_t * liste,
+		       int size ) ;

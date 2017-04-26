@@ -75,7 +75,8 @@ main(int argc , char * argv[] )
 				 string_referencer_cb ,
 				 string_effacer_cb , 
 				 string_comparer_cb ,
-				 liste ) ) )
+				 liste,
+				 N ) ) )
     { 
       printf("Sortie avec code erreur = %d\n" , noerr ) ;
       return(noerr) ; 

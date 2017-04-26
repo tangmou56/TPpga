@@ -69,7 +69,8 @@ extern err_t noeud_detruire( noeud_t ** noeud ,
  */
 
 extern void noeud_afficher( const noeud_t * noeud ,
-			    void (*afficher)(const void *) ) ;
+			    void (*afficher)(const void *),
+			    const int parcours ) ;
 
 /*
  * Sauvegarde d'un noeud dans un fichier 

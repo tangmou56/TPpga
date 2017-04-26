@@ -102,7 +102,7 @@ main(int argc , char * argv[] )
     {
       printf("\n--------\nAffichage ancetres du noeud ") ;
       noeud_afficher( noeuds[i] , 
-		      individu_afficher_cb ) ; 
+		      individu_afficher_cb,1 ) ; 
       printf("\n\n") ; 
       abr_ancetres_afficher( arbre ,  noeuds[i] ,
 			    individu_afficher_cb ) ;      
