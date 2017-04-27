@@ -236,7 +236,7 @@ main( int argc , char * argv[] )
   for( i=0 ; i<nb_operations ; i++ ) 
     {
       i_operation = random()%(int)nb ;
-      if( abr_supprimer( arbre , liste_elem_lire(liste_w , i_operation ) ) )
+      if( abr_supprimer( arbre , liste_elem_lire(liste_w , i_operation ),string_copier ) )
 	cpt_rech_pos++ ;
       else
 	cpt_rech_neg++ ;

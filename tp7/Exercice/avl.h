@@ -66,7 +66,7 @@ extern err_t avl_inserer( avl_t * arbre  ,
  */
 
 extern booleen_t avl_supprimer( avl_t * arbre ,
-			    void * etiquette ) ;
+			 void * etiquette,err_t (*copier)( void*, void *) ) ;
 
 /*
  * Chargement d'un arbre a partir d'un fichier 

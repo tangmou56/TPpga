@@ -129,11 +129,14 @@ void abr_afficher( const abr_t * arbre ,
  */
 
 
-void inser(noeud_t **racine,void *etiquette,int (*comparer)(void * e1 , void * e2),
+void inser(noeud_t **racine,void *etiquette, int comparer( const void * e1 , const void * e2 ),
 			err_t (*fonction_affectation)( void * e1 , void * e2 ) ){
+	int cmp;	
 	if(*racine!=NULL){
+		cmp=comparer(&((*racine)->etiquette),(&etiquette));
 		
-		if(comparer(&((*racine)->etiquette),(&etiquette))>0){
+		
+		if(cmp>0){
 			inser(&((*racine)->gauche),etiquette,comparer,fonction_affectation);
 		}
 		else{
@@ -160,49 +163,60 @@ err_t abr_inserer( abr_t * arbre  ,
  * Suppression d'une valeur dans un ABR
  */
  void gauche_max(noeud_t ** result,noeud_t *racine){
- 	if(racine->droit!=NULL){
- 		gauche_max(result,racine->droit);
- 	}
- 	else
- 		*result=racine;
+	if(racine!=NULL){
+	 	if(racine->droit!=NULL){
+	 		gauche_max(result,racine->droit);
+	 	}
+	 	else
+ 			*result=racine;
+	}
  }
  
  
  
-void supp(noeud_t **noeud,err_t (*detruire)( void * e),abr_t * arbre){
-	noeud_t *pere;
-	noeud_t *w;
-	noeud_t *mid;
+void supp(noeud_t **noeud,err_t (*detruire)( void * e),abr_t * arbre,err_t (*copier)( void*, void *)){
+	noeud_t *pere=NULL;
+	noeud_t *w=NULL;
+	
 	if(noeud_feuille(*noeud)){
+		
 		pere=abr_pere_rechercher(arbre ,*noeud );
-		if(pere->gauche==*noeud)
-			pere->gauche=NULL;
-		else
-			pere->droit=NULL;
+		if(pere!=NULL)	{
+			if(pere->gauche==*noeud)
+				pere->gauche=NULL;
+			else
+				pere->droit=NULL;
+		}
 		detruire(&((*noeud)->etiquette));
 		free(*noeud);
 		*noeud=NULL;
 	}
 	else if((*noeud)->gauche==NULL&&(*noeud)->droit!=NULL){
+
 		pere=abr_pere_rechercher(arbre ,*noeud );
-		pere->droit=(*noeud)->droit;
+		if(pere!=NULL)	
+			pere->droit=(*noeud)->droit;
 		detruire(&((*noeud)->etiquette));
 		free(*noeud);
 		*noeud=NULL;
 	}
 	else if((*noeud)->droit==NULL&&(*noeud)->gauche!=NULL){
+
 		pere=abr_pere_rechercher(arbre ,*noeud );
-		pere->gauche=(*noeud)->gauche;
+		if(pere!=NULL)	
+			pere->gauche=(*noeud)->gauche;
 		detruire(&((*noeud)->etiquette));
 		free(*noeud);
 		*noeud=NULL;
 	}
 	else{
+
 		gauche_max(&w,(*noeud)->gauche);
-
-
-
-		supp(&w,detruire,arbre);
+		detruire(&((*noeud)->etiquette));
+		if(w!=NULL){
+			copier(&((*noeud)->etiquette),(w->etiquette));
+			supp(&w,detruire,arbre,copier);
+		}
 
 	}
 
@@ -211,7 +225,7 @@ void supp(noeud_t **noeud,err_t (*detruire)( void * e),abr_t * arbre){
 
 extern 
 booleen_t abr_supprimer( abr_t * arbre ,
-			 void * etiquette) 
+			 void * etiquette,err_t (*copier)( void*, void *)) 
 {
   booleen_t trouve = FAUX ;
   noeud_t* result;
@@ -219,8 +233,9 @@ booleen_t abr_supprimer( abr_t * arbre ,
   
   
   	
-  if(trouve){
-  	supp(&result,arbre->detruire,arbre);
+  if(trouve){	
+	
+  	supp(&result,arbre->detruire,arbre,copier);
   }
   
   return(trouve) ;
@@ -436,12 +451,15 @@ booleen_t recherche(noeud_t ** result ,
 			  const noeud_t * racine , 
 			  const void * etiquette,
 			  int comparer( const void * e1 , const void * e2 )){
+	int cmp;	
 	if(racine!=NULL){
-		if(comparer(&(racine->etiquette),&etiquette)>0){
+		cmp=comparer(&(racine->etiquette),&etiquette);
+		
+		if(cmp>0){
 			if(recherche(result,racine->gauche,etiquette,comparer))
 				return VRAI;
 		}
-		else if(comparer(&(racine->etiquette),&etiquette)<0){
+		else if(cmp<0){
 			if(recherche(result,racine->droit,etiquette,comparer))
 				return VRAI;
 		}
@@ -451,9 +469,11 @@ booleen_t recherche(noeud_t ** result ,
 		}
 		return FAUX;
 	}
-	else
-		return FAUX;		  
-
+	else{
+		
+		return FAUX;	
+			  
+	}
 }
 
 

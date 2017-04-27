@@ -64,7 +64,7 @@ extern err_t abr_inserer( abr_t * arbre  ,
  */
 
 extern booleen_t abr_supprimer( abr_t * arbre ,
-			 void * etiquette )  ;
+			 void * etiquette,err_t (*copier)( void*, void *))  ;
 
 /*
  * Chargement d'un arbre a partir d'un fichier 

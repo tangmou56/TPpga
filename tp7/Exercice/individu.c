@@ -160,11 +160,23 @@ individu_t * individu_creer( const char * prenom , const char * nom )
 extern 
 int individu_comparer( const individu_t * const * ind1 , const individu_t * const * ind2 ) 
 {
-  individu_comp++ ; 
+ individu_comp++ ; 
+
+
+
+if(strcmp( (*ind1)->nom , (*ind2)->nom ) ==0){
+	if(strcmp( (*ind1)->prenom , (*ind2)->prenom ) ==0)
+		
+		return 0;
+}
+
 
   int cmp = strcmp( (*ind1)->nom , (*ind2)->nom )  ;
-  if( cmp ) return(cmp); 
+  if( cmp ) 
+	return(cmp);
+
   return( strcmp( (*ind1)->prenom , (*ind2)->prenom ) ) ;
+
 }
 
 /* 

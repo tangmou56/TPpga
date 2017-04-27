@@ -127,7 +127,7 @@ main(int argc , char * argv[] )
       printf("Destruction de ") ; 
       fraction_afficher(fractions[ind_supp]) ; 
       printf("\n") ; 
-      if( abr_supprimer( arbre , fractions[ind_supp] ) )
+      if( abr_supprimer( arbre , fractions[ind_supp],fraction_copier ) )
 	printf(" --> Noeud trouve\n" ) ; 
       else
 	printf(" --> Noeud pas trouve\n" ) ; 

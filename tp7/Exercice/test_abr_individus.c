@@ -90,7 +90,7 @@ main(int argc , char * argv[] )
   abr_afficher( arbre , individu_afficher_cb , PREFIXE ) ; 
   printf( "\n");
 
-  printf( "Test sauvegarde arbre abr_t\n" ) ; 
+  /*printf( "Test sauvegarde arbre abr_t\n" ) ; 
   if( ( noerr = abr_sauver( arbre , FICH_TEST , individu_sauver_cb ) ) )
     { 
       printf("Sortie avec code erreur = %d\n" , noerr ) ;
@@ -119,7 +119,7 @@ main(int argc , char * argv[] )
 
   printf( "Affichage arbre charge\n" ) ;
   abr_afficher( arbre , individu_afficher_cb , PREFIXE ) ; 
-  printf( "\n");
+  printf( "\n");*/
 
   printf( "Test destructions elements \n" ) ;
   int ind_supp = 0 ; 
@@ -129,7 +129,7 @@ main(int argc , char * argv[] )
       printf("Destruction de ") ; 
       individu_afficher(individus[ind_supp]) ; 
       printf("\n") ; 
-      if( abr_supprimer( arbre , individus[ind_supp] ) )
+      if( abr_supprimer( arbre , individus[ind_supp],individu_copier ) )
 	printf(" --> Noeud trouve\n" ) ; 
       else
 	printf(" --> Noeud pas trouve\n" ) ; 
