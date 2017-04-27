@@ -132,7 +132,8 @@ main( int argc , char * argv[] )
 				  string_copier_cb , 
 				  string_detruire_cb , 
 				  string_comparer_cb ,
-				  liste_w ) ))
+				  liste_w,
+				  liste_w->nb ) ))
     { 
       printf("Sortie avec code erreur = %d\n" , noerr ) ;
       err_print(noerr) ;

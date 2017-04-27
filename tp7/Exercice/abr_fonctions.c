@@ -66,7 +66,7 @@ err_t abr_dicho_creer( abr_t ** arbre ,
   (*arbre)->affecter=fonction_affectation;
   (*arbre)->detruire=fonction_destruction;
   (*arbre)->comparer=fonction_comparaison;
-  affec(liste->liste,&((*arbre)->racine),0,size,fonction_affectation);
+  affec(liste->liste,&((*arbre)->racine),0,size-1,fonction_affectation);
   
 
 

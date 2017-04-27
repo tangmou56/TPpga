@@ -147,6 +147,7 @@ void noeud_afficher( const noeud_t * noeud ,
 		     const int parcours ) 
 {
   if(noeud!=NULL){
+
     if(parcours==1)
 		afficher(noeud->etiquette);
 	noeud_afficher(noeud->gauche,afficher,parcours);

@@ -172,6 +172,7 @@ err_t abr_inserer( abr_t * arbre  ,
 void supp(noeud_t **noeud,err_t (*detruire)( void * e),abr_t * arbre){
 	noeud_t *pere;
 	noeud_t *w;
+	noeud_t *mid;
 	if(noeud_feuille(*noeud)){
 		pere=abr_pere_rechercher(arbre ,*noeud );
 		if(pere->gauche==*noeud)
@@ -198,8 +199,9 @@ void supp(noeud_t **noeud,err_t (*detruire)( void * e),abr_t * arbre){
 	}
 	else{
 		gauche_max(&w,(*noeud)->gauche);
-		
-		
+
+
+
 		supp(&w,detruire,arbre);
 
 	}
